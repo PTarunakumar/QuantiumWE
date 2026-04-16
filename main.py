@@ -1,16 +1,10 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+import csv
+for x in range(0,3):
+    with open(f'data/daily_sales_data_{x}.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['product'] == "pink morsel":
+                sales = float(row['quantity']) * float(row['price'][1:])
+                date = row['date']
+                region = row['region']
+                print(sales, date, region)
