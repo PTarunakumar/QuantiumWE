@@ -3,26 +3,7 @@ import pandas
 from dash import Dash,html,dcc,Input,Output
 from plotly.express import line
 
-def csvMerge():
-    with open('combined.csv', 'w') as resultfile:
-        writer = csv.writer(resultfile)
-        writer.writerow(['sales', 'date', 'region'])
-
-        for x in range(0,3):
-            with open(f'data/daily_sales_data_{x}.csv') as csvfile:
-                reader = csv.DictReader(csvfile)
-
-                for row in reader:
-                    if row['product'] == "pink morsel":
-                        sales = float(row['quantity']) * float(row['price'][1:])
-                        date = row['date']
-                        region = row['region']
-                        writer.writerow([sales, date, region])
-
-
-
-# the path to the formatted data file
-DATA_PATH = "./formatted_data.csv"
+DATA_PATH = "./combined.csv"
 COLORS = {
     "primary": "#FEDBFF",
     "secondary": "#D598EB",
